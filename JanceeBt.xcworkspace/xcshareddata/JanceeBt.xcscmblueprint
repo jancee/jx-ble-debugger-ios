@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "CD3261A9E7B27913AB354865B048DD78F3D88E92",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "0D34999A901C5986462A76465A7993AA54C463AE" : 9223372036854775807,
+    "CD3261A9E7B27913AB354865B048DD78F3D88E92" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "110D01FF-CA8F-41B6-A62E-4E680071781F",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "0D34999A901C5986462A76465A7993AA54C463AE" : "Zaplites-Basic-IOS-Project\/",
+    "CD3261A9E7B27913AB354865B048DD78F3D88E92" : "JanceeBlue-ios-project\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "JanceeBt",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "JanceeBt\/JanceeBt.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "http:\/\/git.jancee.cn:3000\/jancee\/Zaplites-Basic-IOS-Project.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0D34999A901C5986462A76465A7993AA54C463AE"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "http:\/\/git.jancee.cn:3000\/jancee\/JanceeBlue-ios-project.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "CD3261A9E7B27913AB354865B048DD78F3D88E92"
+    }
+  ]
+}

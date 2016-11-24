@@ -1,0 +1,46 @@
+//
+//  PrefixHeader.pch
+//  JanceeBt
+//
+//  Created by jancee wang on 2016/11/14.
+//  Copyright © 2016年 Wang Jingxi. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#import <objc/runtime.h>
+
+//三方框架
+#import "ReactiveCocoa/ReactiveCocoa.h"         //RCA
+#import "Mantle/Mantle.h"
+#import "FMDB/FMDB.h"
+
+
+
+#import "JXBTService.h"
+
+//Foundations
+#import "MacroDefinition.h"
+#import "NSDate+WJXTools.h"
+#import "NSString+byteLength.h"
+#import "NSString+MD5.h"
+#import "NSString+Verify.h"
+#import "UISlider+WJXSege.h"
+#import "NSData+Hex.h"
+#import "UITableView+HideTableFooterSeperator.h"
+
+
+
+//delegate
+#import "SearchDeviceViewDelegate.h"
+
+//SubView Controller
+#import "OrderMenuTableViewController.h"
+#import "ShowMenuTableViewController.h"
+#import "FilterMenuTableViewController.h"
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif /* PrefixHeader_pch */
