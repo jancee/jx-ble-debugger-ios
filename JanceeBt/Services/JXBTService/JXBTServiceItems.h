@@ -83,15 +83,17 @@ typedef enum {
 
 @interface JXBTDeviceSearched : NSObject
 
-@property (nonatomic, strong, readonly) NSString *uuid;
-@property (nonatomic, strong, readonly) NSString *deviceName;
-@property (nonatomic, strong, readonly) NSString *localName;
-@property (nonatomic, strong, readonly) NSData *advData;
-@property (nonatomic, strong, readonly) NSNumber *rssi;
+@property (nonatomic, strong, readonly) NSString *uuid;         //设备UUID
+@property (nonatomic, strong, readonly) NSString *deviceName;   //设备名
+@property (nonatomic, strong, readonly) NSString *localName;    //设备搜索响应名
+@property (nonatomic, strong, readonly) NSData   *advData;      //自定义广播
+@property (nonatomic, strong, readonly) NSNumber *rssi;         //信号强度
 
 
-@property (nonatomic, strong, readonly) CBPeripheral *peripheral;
+@property (nonatomic, strong, readonly) CBPeripheral *peripheral; //Peripheral
 
+
+//初始化
 - (instancetype)initWithUuid:(NSString*)uuid
                   DeviceName:(NSString*)deviceName
                          localName:(NSString*)localName

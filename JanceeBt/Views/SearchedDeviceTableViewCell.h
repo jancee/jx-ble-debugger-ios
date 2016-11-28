@@ -10,4 +10,22 @@
 
 @interface SearchedDeviceTableViewCell : UITableViewCell
 
+@property (strong, nonatomic) IBOutlet UIImageView  *signalImageView;
+@property (strong, nonatomic) IBOutlet UILabel      *signalLabel;
+
+@property (strong, nonatomic) IBOutlet UILabel      *serviceCountLabel;
+
+@property (strong, nonatomic) IBOutlet UITextView   *notifyTextView;
+@property (strong, nonatomic) IBOutlet UIButton     *topButton;
+@property (strong, nonatomic) IBOutlet UILabel      *nameLabel;
+
+
+- (void)setRssi:(long)rssi;
+
+- (void)setDeviceName:(NSString*)deviceName localName:(NSString*)localName;
+
+- (void)setNotify:(NSData*)notify;
+
+- (void)setSearched:(BOOL)searched;
+
 @end

@@ -10,4 +10,6 @@
 
 @interface OrderMenuTableViewController : UITableViewController
 
+@property (nonatomic, strong) NSNumber *checkWhich;
+
 @end

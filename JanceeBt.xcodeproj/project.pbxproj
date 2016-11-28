@@ -18,6 +18,7 @@
 		74C64E851DEBCC7D00CD5C75 /* JXBTServiceConnecter.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C64E7F1DEBCC7D00CD5C75 /* JXBTServiceConnecter.m */; };
 		74C64E861DEBCC7D00CD5C75 /* JXBTServiceItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C64E811DEBCC7D00CD5C75 /* JXBTServiceItems.m */; };
 		74C64E871DEBCC7D00CD5C75 /* JXBTServiceScannner.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C64E831DEBCC7D00CD5C75 /* JXBTServiceScannner.m */; };
+		74C64E8A1DEC223100CD5C75 /* DeviceDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C64E891DEC223100CD5C75 /* DeviceDetailViewController.m */; };
 		74E20D191DD98ED8007565AE /* NSData+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 74E20D0C1DD98ED8007565AE /* NSData+Hex.m */; };
 		74E20D1A1DD98ED8007565AE /* NSDate+WJXTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 74E20D0E1DD98ED8007565AE /* NSDate+WJXTools.m */; };
 		74E20D1B1DD98ED8007565AE /* NSString+byteLength.m in Sources */ = {isa = PBXBuildFile; fileRef = 74E20D101DD98ED8007565AE /* NSString+byteLength.m */; };
@@ -66,6 +67,8 @@
 		74C64E811DEBCC7D00CD5C75 /* JXBTServiceItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXBTServiceItems.m; sourceTree = "<group>"; };
 		74C64E821DEBCC7D00CD5C75 /* JXBTServiceScannner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXBTServiceScannner.h; sourceTree = "<group>"; };
 		74C64E831DEBCC7D00CD5C75 /* JXBTServiceScannner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXBTServiceScannner.m; sourceTree = "<group>"; };
+		74C64E881DEC223100CD5C75 /* DeviceDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceDetailViewController.h; sourceTree = "<group>"; };
+		74C64E891DEC223100CD5C75 /* DeviceDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceDetailViewController.m; sourceTree = "<group>"; };
 		74E20D051DD98D94007565AE /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		74E20D0A1DD98ED8007565AE /* MacroDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MacroDefinition.h; sourceTree = "<group>"; };
 		74E20D0B1DD98ED8007565AE /* NSData+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Hex.h"; sourceTree = "<group>"; };
@@ -258,6 +261,8 @@
 				74E20D5B1DD9B629007565AE /* 主界面 */,
 				74E20D321DD99FF4007565AE /* SlideNavigationController.h */,
 				74E20D331DD99FF4007565AE /* SlideNavigationController.m */,
+				74C64E881DEC223100CD5C75 /* DeviceDetailViewController.h */,
+				74C64E891DEC223100CD5C75 /* DeviceDetailViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -519,6 +524,7 @@
 				74E20D881DE2E373007565AE /* BTServiceSenderModelB.m in Sources */,
 				7471DAA01DD958A700D08331 /* SearchedDeviceTableViewCell.m in Sources */,
 				74E20D7C1DE28C61007565AE /* README.md in Sources */,
+				74C64E8A1DEC223100CD5C75 /* DeviceDetailViewController.m in Sources */,
 				74E20D1C1DD98ED8007565AE /* NSString+MD5.m in Sources */,
 				7471DA6D1DD7211A00D08331 /* JanceeBt.xcdatamodeld in Sources */,
 				74C64E871DEBCC7D00CD5C75 /* JXBTServiceScannner.m in Sources */,

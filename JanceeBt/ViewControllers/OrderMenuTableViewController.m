@@ -27,11 +27,22 @@
 
 @implementation OrderMenuTableViewController
 
+- (instancetype)init {
+  self = [super init];
+  
+  self.checkWhich = @1;
+  
+  return self;
+}
+
 - (void)viewDidLoad {
   [super viewDidLoad];
   
   
   self.array = [[NSMutableArray alloc] init];
+  self.orderByNameCheckImageView.hidden = YES;
+  self.orderByRSSICheckImageView.hidden = YES;
+  self.orderBySearchCheckImageView.hidden = NO;
   
   //点击对勾视图处理
   UITapGestureRecognizer *orderBySearchContentViewTap = [[UITapGestureRecognizer alloc] init];
@@ -41,13 +52,25 @@
   [self.orderByRSSIContentView   addGestureRecognizer:orderByRSSIContentViewTap];
   [self.orderByNameContentView   addGestureRecognizer:orderByNameContentViewTap];
   RAC(self.orderBySearchCheckImageView,hidden) = [[orderBySearchContentViewTap rac_gestureSignal] map:^id(id x) {
-    return @(![self.orderBySearchCheckImageView isHidden]);
+    self.orderByNameCheckImageView.hidden = YES;
+    self.orderByRSSICheckImageView.hidden = YES;
+    self.orderBySearchCheckImageView.hidden = YES;
+    self.checkWhich = @1;
+    return @NO;
   }];
   RAC(self.orderByRSSICheckImageView,hidden) = [[orderByRSSIContentViewTap rac_gestureSignal] map:^id(id x) {
-    return @(![self.orderByRSSICheckImageView isHidden]);
+    self.orderByNameCheckImageView.hidden = YES;
+    self.orderByRSSICheckImageView.hidden = YES;
+    self.orderBySearchCheckImageView.hidden = YES;
+    self.checkWhich = @2;
+    return @NO;
   }];
   RAC(self.orderByNameCheckImageView,hidden) = [[orderByNameContentViewTap rac_gestureSignal] map:^id(id x) {
-    return @(![self.orderByNameCheckImageView isHidden]);
+    self.orderByNameCheckImageView.hidden = YES;
+    self.orderByRSSICheckImageView.hidden = YES;
+    self.orderBySearchCheckImageView.hidden = YES;
+    self.checkWhich = @3;
+    return @NO;
   }];
   
   
