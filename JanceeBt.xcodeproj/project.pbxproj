@@ -13,9 +13,11 @@
 		7471DA6D1DD7211A00D08331 /* JanceeBt.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7471DA6B1DD7211A00D08331 /* JanceeBt.xcdatamodeld */; };
 		7471DA6F1DD7211A00D08331 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7471DA6E1DD7211A00D08331 /* Assets.xcassets */; };
 		7471DA721DD7211A00D08331 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7471DA701DD7211A00D08331 /* LaunchScreen.storyboard */; };
-		7471DA871DD7220C00D08331 /* JXBTService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7471DA841DD7220C00D08331 /* JXBTService.m */; };
-		7471DA881DD7220C00D08331 /* JXBTServiceItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 7471DA861DD7220C00D08331 /* JXBTServiceItems.m */; };
 		7471DAA01DD958A700D08331 /* SearchedDeviceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7471DA9F1DD958A700D08331 /* SearchedDeviceTableViewCell.m */; };
+		74C64E841DEBCC7D00CD5C75 /* JXBTService.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C64E7D1DEBCC7D00CD5C75 /* JXBTService.m */; };
+		74C64E851DEBCC7D00CD5C75 /* JXBTServiceConnecter.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C64E7F1DEBCC7D00CD5C75 /* JXBTServiceConnecter.m */; };
+		74C64E861DEBCC7D00CD5C75 /* JXBTServiceItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C64E811DEBCC7D00CD5C75 /* JXBTServiceItems.m */; };
+		74C64E871DEBCC7D00CD5C75 /* JXBTServiceScannner.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C64E831DEBCC7D00CD5C75 /* JXBTServiceScannner.m */; };
 		74E20D191DD98ED8007565AE /* NSData+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 74E20D0C1DD98ED8007565AE /* NSData+Hex.m */; };
 		74E20D1A1DD98ED8007565AE /* NSDate+WJXTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 74E20D0E1DD98ED8007565AE /* NSDate+WJXTools.m */; };
 		74E20D1B1DD98ED8007565AE /* NSString+byteLength.m in Sources */ = {isa = PBXBuildFile; fileRef = 74E20D101DD98ED8007565AE /* NSString+byteLength.m */; };
@@ -38,8 +40,6 @@
 		74E20D6C1DD9C044007565AE /* ShowMenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74E20D6B1DD9C044007565AE /* ShowMenuTableViewController.m */; };
 		74E20D6F1DD9C063007565AE /* FilterMenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74E20D6E1DD9C063007565AE /* FilterMenuTableViewController.m */; };
 		74E20D7C1DE28C61007565AE /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 74E20D7B1DE28C61007565AE /* README.md */; };
-		74E20D7F1DE2A045007565AE /* JXBTServiceConnecter.m in Sources */ = {isa = PBXBuildFile; fileRef = 74E20D7E1DE2A045007565AE /* JXBTServiceConnecter.m */; };
-		74E20D821DE2A5E2007565AE /* JXBTServiceScannner.m in Sources */ = {isa = PBXBuildFile; fileRef = 74E20D811DE2A5E2007565AE /* JXBTServiceScannner.m */; };
 		74E20D851DE2E362007565AE /* BTServiceSenderModelA.m in Sources */ = {isa = PBXBuildFile; fileRef = 74E20D841DE2E362007565AE /* BTServiceSenderModelA.m */; };
 		74E20D881DE2E373007565AE /* BTServiceSenderModelB.m in Sources */ = {isa = PBXBuildFile; fileRef = 74E20D871DE2E373007565AE /* BTServiceSenderModelB.m */; };
 		8B1652F7EFB66E5E1B844093 /* Pods_JanceeBt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF76782243E0B8C83193E34B /* Pods_JanceeBt.framework */; };
@@ -56,12 +56,16 @@
 		7471DA6E1DD7211A00D08331 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7471DA711DD7211A00D08331 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7471DA731DD7211A00D08331 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7471DA831DD7220C00D08331 /* JXBTService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXBTService.h; sourceTree = "<group>"; };
-		7471DA841DD7220C00D08331 /* JXBTService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXBTService.m; sourceTree = "<group>"; };
-		7471DA851DD7220C00D08331 /* JXBTServiceItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXBTServiceItems.h; sourceTree = "<group>"; };
-		7471DA861DD7220C00D08331 /* JXBTServiceItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXBTServiceItems.m; sourceTree = "<group>"; };
 		7471DA9E1DD958A700D08331 /* SearchedDeviceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchedDeviceTableViewCell.h; sourceTree = "<group>"; };
 		7471DA9F1DD958A700D08331 /* SearchedDeviceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchedDeviceTableViewCell.m; sourceTree = "<group>"; };
+		74C64E7C1DEBCC7D00CD5C75 /* JXBTService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXBTService.h; sourceTree = "<group>"; };
+		74C64E7D1DEBCC7D00CD5C75 /* JXBTService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXBTService.m; sourceTree = "<group>"; };
+		74C64E7E1DEBCC7D00CD5C75 /* JXBTServiceConnecter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXBTServiceConnecter.h; sourceTree = "<group>"; };
+		74C64E7F1DEBCC7D00CD5C75 /* JXBTServiceConnecter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXBTServiceConnecter.m; sourceTree = "<group>"; };
+		74C64E801DEBCC7D00CD5C75 /* JXBTServiceItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXBTServiceItems.h; sourceTree = "<group>"; };
+		74C64E811DEBCC7D00CD5C75 /* JXBTServiceItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXBTServiceItems.m; sourceTree = "<group>"; };
+		74C64E821DEBCC7D00CD5C75 /* JXBTServiceScannner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXBTServiceScannner.h; sourceTree = "<group>"; };
+		74C64E831DEBCC7D00CD5C75 /* JXBTServiceScannner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXBTServiceScannner.m; sourceTree = "<group>"; };
 		74E20D051DD98D94007565AE /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		74E20D0A1DD98ED8007565AE /* MacroDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MacroDefinition.h; sourceTree = "<group>"; };
 		74E20D0B1DD98ED8007565AE /* NSData+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Hex.h"; sourceTree = "<group>"; };
@@ -109,10 +113,6 @@
 		74E20D6D1DD9C063007565AE /* FilterMenuTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterMenuTableViewController.h; sourceTree = "<group>"; };
 		74E20D6E1DD9C063007565AE /* FilterMenuTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterMenuTableViewController.m; sourceTree = "<group>"; };
 		74E20D7B1DE28C61007565AE /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		74E20D7D1DE2A045007565AE /* JXBTServiceConnecter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXBTServiceConnecter.h; sourceTree = "<group>"; };
-		74E20D7E1DE2A045007565AE /* JXBTServiceConnecter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXBTServiceConnecter.m; sourceTree = "<group>"; };
-		74E20D801DE2A5E2007565AE /* JXBTServiceScannner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXBTServiceScannner.h; sourceTree = "<group>"; };
-		74E20D811DE2A5E2007565AE /* JXBTServiceScannner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXBTServiceScannner.m; sourceTree = "<group>"; };
 		74E20D831DE2E362007565AE /* BTServiceSenderModelA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTServiceSenderModelA.h; sourceTree = "<group>"; };
 		74E20D841DE2E362007565AE /* BTServiceSenderModelA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTServiceSenderModelA.m; sourceTree = "<group>"; };
 		74E20D861DE2E373007565AE /* BTServiceSenderModelB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTServiceSenderModelB.h; sourceTree = "<group>"; };
@@ -233,7 +233,7 @@
 		7471DA7C1DD721B300D08331 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				7471DA821DD7220C00D08331 /* JXBTService */,
+				74C64E7B1DEBCC7D00CD5C75 /* JXBTService */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -280,20 +280,19 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		7471DA821DD7220C00D08331 /* JXBTService */ = {
+		74C64E7B1DEBCC7D00CD5C75 /* JXBTService */ = {
 			isa = PBXGroup;
 			children = (
-				7471DA831DD7220C00D08331 /* JXBTService.h */,
-				7471DA841DD7220C00D08331 /* JXBTService.m */,
-				7471DA851DD7220C00D08331 /* JXBTServiceItems.h */,
-				7471DA861DD7220C00D08331 /* JXBTServiceItems.m */,
-				74E20D7D1DE2A045007565AE /* JXBTServiceConnecter.h */,
-				74E20D7E1DE2A045007565AE /* JXBTServiceConnecter.m */,
-				74E20D801DE2A5E2007565AE /* JXBTServiceScannner.h */,
-				74E20D811DE2A5E2007565AE /* JXBTServiceScannner.m */,
+				74C64E7C1DEBCC7D00CD5C75 /* JXBTService.h */,
+				74C64E7D1DEBCC7D00CD5C75 /* JXBTService.m */,
+				74C64E7E1DEBCC7D00CD5C75 /* JXBTServiceConnecter.h */,
+				74C64E7F1DEBCC7D00CD5C75 /* JXBTServiceConnecter.m */,
+				74C64E801DEBCC7D00CD5C75 /* JXBTServiceItems.h */,
+				74C64E811DEBCC7D00CD5C75 /* JXBTServiceItems.m */,
+				74C64E821DEBCC7D00CD5C75 /* JXBTServiceScannner.h */,
+				74C64E831DEBCC7D00CD5C75 /* JXBTServiceScannner.m */,
 			);
-			name = JXBTService;
-			path = "../../../../Zaplites-Basic-IOS-Project/Zaplites Basic/Zaplites Basic/Services/JXBTService";
+			path = JXBTService;
 			sourceTree = "<group>";
 		};
 		74E20D031DD98C68007565AE /* Configurations */ = {
@@ -510,12 +509,10 @@
 				74E20D191DD98ED8007565AE /* NSData+Hex.m in Sources */,
 				74E20D241DD99FBB007565AE /* LeftMenuViewController.m in Sources */,
 				74E20D411DD9A02D007565AE /* SlideNavigationContorllerAnimatorFade.m in Sources */,
-				7471DA871DD7220C00D08331 /* JXBTService.m in Sources */,
 				74E20D441DD9A02D007565AE /* SlideNavigationContorllerAnimatorSlide.m in Sources */,
 				74E20D431DD9A02D007565AE /* SlideNavigationContorllerAnimatorScaleAndFade.m in Sources */,
 				74E20D1F1DD98ED8007565AE /* UITableView+HideTableFooterSeperator.m in Sources */,
 				74E20D1B1DD98ED8007565AE /* NSString+byteLength.m in Sources */,
-				74E20D821DE2A5E2007565AE /* JXBTServiceScannner.m in Sources */,
 				74E20D341DD99FF4007565AE /* SlideNavigationController.m in Sources */,
 				74E20D851DE2E362007565AE /* BTServiceSenderModelA.m in Sources */,
 				74E20D481DD9A12F007565AE /* SearchDeviceViewController.m in Sources */,
@@ -524,6 +521,7 @@
 				74E20D7C1DE28C61007565AE /* README.md in Sources */,
 				74E20D1C1DD98ED8007565AE /* NSString+MD5.m in Sources */,
 				7471DA6D1DD7211A00D08331 /* JanceeBt.xcdatamodeld in Sources */,
+				74C64E871DEBCC7D00CD5C75 /* JXBTServiceScannner.m in Sources */,
 				74E20D6F1DD9C063007565AE /* FilterMenuTableViewController.m in Sources */,
 				74E20D1A1DD98ED8007565AE /* NSDate+WJXTools.m in Sources */,
 				74E20D451DD9A02D007565AE /* SlideNavigationContorllerAnimatorSlideAndFade.m in Sources */,
@@ -531,12 +529,13 @@
 				74E20D421DD9A02D007565AE /* SlideNavigationContorllerAnimatorScale.m in Sources */,
 				7471DA641DD7211A00D08331 /* AppDelegate.m in Sources */,
 				74E20D5E1DD9B6E4007565AE /* SearchDeviceViewModel.m in Sources */,
+				74C64E841DEBCC7D00CD5C75 /* JXBTService.m in Sources */,
+				74C64E861DEBCC7D00CD5C75 /* JXBTServiceItems.m in Sources */,
 				74E20D251DD99FBB007565AE /* RightMenuViewController.m in Sources */,
 				74E20D691DD9BCEF007565AE /* OrderMenuTableViewController.m in Sources */,
-				7471DA881DD7220C00D08331 /* JXBTServiceItems.m in Sources */,
 				74E20D6C1DD9C044007565AE /* ShowMenuTableViewController.m in Sources */,
 				7471DA611DD7211A00D08331 /* main.m in Sources */,
-				74E20D7F1DE2A045007565AE /* JXBTServiceConnecter.m in Sources */,
+				74C64E851DEBCC7D00CD5C75 /* JXBTServiceConnecter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
