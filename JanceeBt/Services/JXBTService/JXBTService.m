@@ -44,7 +44,8 @@ static CBCentralManager   *cbCentralManager;
   self = [super init]; //获得父类的对象并进行初始化
   if (self) {
     //持有实例处理
-    cbCentralManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
+    cbCentralManager = [[CBCentralManager alloc] initWithDelegate:self
+                                                            queue:nil];
     
     //对象初始化
     self.allDeviceDetails               = [[NSMutableArray alloc] init];
@@ -54,6 +55,10 @@ static CBCentralManager   *cbCentralManager;
     
   }
   return self;
+}
+
+- (CBCentralManager*)getCentralManager {
+  return cbCentralManager;
 }
 
 
@@ -66,7 +71,7 @@ static CBCentralManager   *cbCentralManager;
  @return 是否去连接了
  */
 - (instancetype)connectDevice:(NSString*)uuid {
-  CBPeripheral *toPeripheral;
+  static CBPeripheral *toPeripheral;
   for (JXBTDeviceDetail *detail in self.allDeviceDetails) {
     if([detail.peripheral.identifier.UUIDString isEqualToString:uuid]) {
       toPeripheral = detail.peripheral;
@@ -86,9 +91,9 @@ static CBCentralManager   *cbCentralManager;
     //设置detail状态
     aimItem.connectStatus = JXBTDeviceConnectStatus_Connecting;
     
-    NSLog(@"真正进行连接%@",toPeripheral);
+    toPeripheral.delegate = self;
     //进行连接
-    [cbCentralManager connectPeripheral:toPeripheral options:nil];
+    [cbCentralManager connectPeripheral:[toPeripheral copy] options:nil];
   }
   return self;
 }
@@ -200,9 +205,11 @@ static CBCentralManager   *cbCentralManager;
     if(btLayerDevice.connectStatus == JXBTDeviceConnectStatus_Connected) {
       CBCharacteristic *character = [btLayerDevice findCBCharacteristic:characterUuid];
       if(character != nil) {
-        [btLayerDevice.peripheral writeValue:sendData
-                           forCharacteristic:character
-                                        type:withResponse ? CBCharacteristicWriteWithResponse : CBCharacteristicWriteWithoutResponse];
+        [btLayerDevice.peripheral
+         writeValue:sendData
+         forCharacteristic:character
+         type:withResponse ? CBCharacteristicWriteWithResponse : CBCharacteristicWriteWithoutResponse];
+        
         findCount++;
       }
     }
@@ -271,7 +278,7 @@ static CBCentralManager   *cbCentralManager;
 #pragma mark - JXBTServiceScannerService
 /**
  Connecter通知我，搜到设备
-
+ 
  @param item 设备JXBTDeviceSearchedItem
  */
 - (void)tellMeSearchedDevice:(JXBTDeviceSearched *)item {
@@ -315,6 +322,7 @@ static CBCentralManager   *cbCentralManager;
   }
 }
 
+//不能删
 - (void)centralManager:(CBCentralManager *)central
  didDiscoverPeripheral:(CBPeripheral *)peripheral
      advertisementData:(NSDictionary *)advertisementData
@@ -324,7 +332,9 @@ static CBCentralManager   *cbCentralManager;
 #pragma mark 连接成功回调
 - (void)centralManager:(CBCentralManager *)central
   didConnectPeripheral:(CBPeripheral *)peripheral {
-  [self log:@"连接成功回调"];
+  
+  [self log:@"didConnectPeripheral"];
+  
   //启动搜索服务
   if(peripheral != nil) {
     [peripheral setDelegate:self];      //设置periphral
@@ -334,6 +344,11 @@ static CBCentralManager   *cbCentralManager;
   //更新item状态为已连接
   JXBTDeviceDetail *detail = [self getItemFromDeviceDetailsArray:peripheral.identifier.UUIDString];
   detail.connectStatus = JXBTDeviceConnectStatus_Connected;
+  
+  //发送通知
+  [_deviceConnectRACSubject sendNext:@{
+                                           @"PeripheralUUID"      : peripheral.identifier.UUIDString,
+                                           }];
 }
 
 
@@ -353,15 +368,17 @@ static CBCentralManager   *cbCentralManager;
   }
   [self.deviceInterruptRACSubject sendNext:peripheral];
 }
-
-- (void)centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error{
+- (void)centralManager:(CBCentralManager *)central
+didFailToConnectPeripheral:(CBPeripheral *)peripheral
+                 error:(NSError *)error{
   
-  [self log:@"连接成功回调"];
+  [self log:@"didFailToConnectPeripheral"];
 }
-
-- (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error {
+- (void)centralManager:(CBCentralManager *)central
+didDisconnectPeripheral:(CBPeripheral *)peripheral
+                 error:(NSError *)error {
   
-  [self log:@"连接成功回调"];
+  [self log:@"didDisconnectPeripheral"];
 }
 
 #pragma mark 搜索服务结束回调

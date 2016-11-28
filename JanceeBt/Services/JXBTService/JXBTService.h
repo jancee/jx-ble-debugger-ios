@@ -89,12 +89,6 @@ JXBTServiceScannerService
 
 
 
-
-
-
-
-
-
 /*************** 公开方法 ****************/
 /**
  SharedInstance
@@ -179,6 +173,7 @@ JXBTServiceScannerService
 
 
 /************** 内部方法，不要使用 ***************/
+- (CBCentralManager*)getCentralManager;
 
 /**
  连接指定一个设备

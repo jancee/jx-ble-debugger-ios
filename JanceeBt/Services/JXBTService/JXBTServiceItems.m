@@ -61,7 +61,7 @@
     _localName  = localName;
     _advData    = advData;
     _rssi       = rssi;
-    _peripheral = peripheral;
+    _peripheral = [peripheral copy];
   }
   return self;
 }

@@ -50,16 +50,6 @@
 
 
 
-
-
-- (void)stopScan;
-
-
-
-- (instancetype)initWithLineMethodFilterBlock:(BOOL (^)(JXBTDeviceSearched *item))fBlock
-                                     mapBlock:(JXBTDeviceSearched * (^)(JXBTDeviceSearched *item))mBlock
-                                      scanned:(void(^)(JXBTDeviceSearched *item))sBlock;
-
 @end
 
 

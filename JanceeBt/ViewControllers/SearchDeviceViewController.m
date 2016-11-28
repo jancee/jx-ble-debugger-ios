@@ -49,12 +49,19 @@ static UIStoryboard *mainStoryBoard;
   [[SlideNavigationController sharedInstance] setRightMenu:rightMenuVC];
   
   //配置侧滑栏
-  [self portraitSlideOffsetChanged:2];
+  [self portraitSlideOffsetChanged:2];  //宽度
   
   //加载上方菜单视图
   [self initNavMenuView];
   
-  
+  //设置BLE的Scannner
+  [[[[[JXBTServiceScannner alloc] init] setFilter:^BOOL(JXBTDeviceSearched *item) {
+    return YES;
+  }] map:^JXBTDeviceSearched *(JXBTDeviceSearched *item) {
+    return item;
+  }] onScanned:^(JXBTDeviceSearched *item) {
+    NSLog(@"搜索到设备%@",item);
+  }];
   
   
 }
@@ -130,7 +137,7 @@ static UIStoryboard *mainStoryBoard;
   }
 }
 
-#pragma mark - RAC
+
 
 
 #pragma mark - SlideNavigationController Delegate
@@ -143,6 +150,8 @@ static UIStoryboard *mainStoryBoard;
 {
   return NO;
 }
+
+
 
 #pragma mark - SlideNavigationController Methods
 /**
@@ -205,10 +214,7 @@ static UIStoryboard *mainStoryBoard;
 }
 
 
-
-
-
-#pragma mark - Helpers -
+#pragma mark - SlideNavigationController helpers
 - (NSInteger)indexFromPixels:(NSInteger)pixels
 {
   if (pixels == 60)

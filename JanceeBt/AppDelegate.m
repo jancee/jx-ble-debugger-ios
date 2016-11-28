@@ -20,19 +20,6 @@
   //JXBTService开启
   [JXBTService sharedInstance];
   
-  JXBTServiceScannner *scanner1 = [[JXBTServiceScannner alloc] init];
-  [scanner1 onScanned:^(JXBTDeviceSearched *item) {
-    static BOOL searched = NO;
-    if(!searched) {
-      [scanner1 stopScan];
-      [[JXBTServiceConnecter getConnecterWithUuid:item.uuid] connect];
-      searched = YES;
-    }
-  }];
-  
-  dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, 15.0f * NSEC_PER_SEC);
-  dispatch_after(time, dispatch_get_main_queue(), ^{
-  });
   return YES;
   
 }

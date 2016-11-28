@@ -21,6 +21,7 @@ static const NSString* DictInConnecterArrayKey_Connecter = @"CONNECTER";
 }
 
 @property (nonatomic, strong) NSString *uuid;
+@property (nonatomic) BOOL reconnectEnable;
 
 @property (nonatomic) JXBTServiceConnecter_SendDataIntervalMode sendDataIntervalMode;
 @property (nonatomic) CGFloat                                   sendDataIntervalTime;
@@ -30,32 +31,43 @@ static const NSString* DictInConnecterArrayKey_Connecter = @"CONNECTER";
 
 @implementation JXBTServiceConnecter
 
-static const NSString* logPrefix = @"[JXBTServiceConnecter] -> ";
+static const NSString* logPrefix = @"[JXBTServiceConnecter]";
 
 static NSMutableArray<NSDictionary *> *allConnecterArray;
 
 #pragma mark - 初始化方法
 + (instancetype)getConnecterWithUuid:(NSString*)uuid {
   JXBTServiceConnecter *returnConnecter;
+  
+  //查找对应的uuid的连接器
   for (NSDictionary *forDict in allConnecterArray) {
     if([forDict[DictInConnecterArrayKey_UUID] isEqualToString:uuid]) {
       returnConnecter = forDict[DictInConnecterArrayKey_Connecter];
       break;
     }
   }
+  
+  //没有已有连接器
   if(returnConnecter == nil) {
+    //初始化一个新的连接器
     returnConnecter = [[JXBTServiceConnecter alloc] initWithUuid:uuid];
     [returnConnecter resetAllBlock];
+    
+    //记录这个连接器到静态array
     NSDictionary *addDict = @{
                               DictInConnecterArrayKey_UUID      : uuid,
                               DictInConnecterArrayKey_Connecter : returnConnecter
                               };
     [allConnecterArray addObject:addDict];
   }
+  
+  //连机器
   return returnConnecter;
 }
 
+//连接器重置
 - (instancetype)resetAllBlock {
+  self.reconnectEnable = NO;
   connectBlock        = ^(){};
   disconnectBlock     = ^(){};
   dataDidSubjectBlock = ^(NSDictionary *dict){};
@@ -70,8 +82,8 @@ static NSMutableArray<NSDictionary *> *allConnecterArray;
     //属性初始化
     self.uuid = uuid;
     
-    //RAC
-    //  连接断开\失败
+    /******** RAC **********/
+    //  连接断开/失败
     [[[JXBTService sharedInstance].deviceInterruptRACSubject
       filter:^BOOL(CBPeripheral *value) {
         return [value.identifier.UUIDString isEqualToString:uuid];
@@ -115,6 +127,7 @@ static NSMutableArray<NSDictionary *> *allConnecterArray;
      subscribeNext:^(NSDictionary *value) {
        [self log:@"搜到特征"];
      }];
+    /***********************/
     
   }
   return self;
@@ -128,13 +141,13 @@ static NSMutableArray<NSDictionary *> *allConnecterArray;
 #pragma mark - 设置方法
 /**
  设置发送数据时间间隔模式
-
+ 
  @param mode      模式
  @param seconds   间隔时间
  @return          链式
  */
 - (instancetype)setSendDataIntervalMode:(JXBTServiceConnecter_SendDataIntervalMode)mode
-                withMinInterval:(CGFloat)seconds {
+                        withMinInterval:(CGFloat)seconds {
   self.sendDataIntervalMode = mode;
   self.sendDataIntervalTime = seconds;
   return self;
@@ -144,7 +157,7 @@ static NSMutableArray<NSDictionary *> *allConnecterArray;
 /**
  设置连接超时时间
  先设置，然后再连接才有效
-
+ 
  @param seconds 超时时间
  @return  链式
  */
@@ -177,21 +190,38 @@ static NSMutableArray<NSDictionary *> *allConnecterArray;
 
 
 /**
- 发送数据
+ 设置是否重连
 
+ @param enable 重连？
+ @return 链式
+ */
+- (instancetype)setReconnectListener:(BOOL)enable {
+  self.reconnectEnable = enable;
+  return self;
+}
+
+
+/**
+ 发送数据
+ 
  @param data 数据
  @param uuid 特征uuid
  @return 链式
  */
 - (instancetype)sendData:(NSData*)data
-            toCharacterUuid:(NSString*)uuid {
+         toCharacterUuid:(NSString*)uuid
+            withResponse:(BOOL)response {
+  [[JXBTService sharedInstance] sendDataToSingleDevice:data
+                                               bleUuid:self.uuid
+                                    characteristicUuid:uuid
+                                          withResponse:response];
   return self;
 }
 
 
 /**
  发送一堆数据
-
+ 
  @param dataArray 数据array
  @param uuid 特征uuid
  @param second 时间间隔
@@ -199,9 +229,13 @@ static NSMutableArray<NSDictionary *> *allConnecterArray;
  */
 - (instancetype)sendManyData:(NSArray<NSData*>*)dataArray
              toCharacterUuid:(NSString*)uuid
-                    interval:(CGFloat)second {
+                    interval:(CGFloat)second
+                withResponse:(BOOL)response {
   for (NSData* data in dataArray) {
-    [self sendData:data toCharacterUuid:uuid];
+    [[JXBTService sharedInstance] sendDataToSingleDevice:data
+                                                 bleUuid:self.uuid
+                                      characteristicUuid:uuid
+                                            withResponse:response];
   }
   return self;
 }
@@ -212,7 +246,7 @@ static NSMutableArray<NSDictionary *> *allConnecterArray;
 
 #pragma mark - tools
 - (void)log:(NSString*)log {
-  NSLog(@"%@(%@)",[logPrefix stringByAppendingString:log],self);
+  NSLog(@"%@ -> %@ -> %@",logPrefix, self, log);
 }
 
 

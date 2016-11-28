@@ -18,16 +18,65 @@ typedef enum {
 
 @interface JXBTServiceConnecter : NSObject
 
+/**
+ 获取到一个指定设备Uuid的连接器
+
+ @param uuid 设备Uuid
+ @return 连接器
+ */
 + (instancetype)getConnecterWithUuid:(NSString*)uuid;
 
+
+/**
+ 连接设备
+
+ @return 链式
+ */
 - (instancetype)connect;
+
+
+/**
+ 断开连接设备
+
+ @return 链式
+ */
 - (instancetype)disconnect;
 
-- (instancetype)sendData:(NSData*)data
-         toCharacterUuid:(NSString*)uuid;
 
+/**
+ 设置是否重连
+
+ @param enable 重连？
+ @return 链式
+ */
+- (instancetype)setReconnectListener:(BOOL)enable;
+
+
+/**
+ 发送一条数据
+
+ @param data 数据
+ @param uuid 设备uuid
+ @param response 写响应？
+ @return 链式
+ */
+- (instancetype)sendData:(NSData*)data
+         toCharacterUuid:(NSString*)uuid
+            withResponse:(BOOL)response;
+
+
+/**
+ 发送一堆数据
+
+ @param dataArray 数据array
+ @param uuid 设备uuid
+ @param second 间隔时间
+ @param response 写响应？
+ @return 链式
+ */
 - (instancetype)sendManyData:(NSArray<NSData*>*)dataArray
              toCharacterUuid:(NSString*)uuid
-                    interval:(CGFloat)second;
+                    interval:(CGFloat)second
+                withResponse:(BOOL)response;
 
 @end

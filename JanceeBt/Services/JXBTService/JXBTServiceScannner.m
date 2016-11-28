@@ -47,24 +47,28 @@ static CBCentralManager *scanCentralManager;
   self = [super init];
   if(self) {
     if(scanCentralManager == nil) {
-      scanCentralManager = [[CBCentralManager alloc] initWithDelegate:[JXBTService sharedInstance] queue:nil];
+      scanCentralManager = [[JXBTService sharedInstance] getCentralManager];
       dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, 1.5f * NSEC_PER_SEC);
       dispatch_after(time, dispatch_get_main_queue(), ^{
         [scanCentralManager scanForPeripheralsWithServices:nil
                                                    options:@{CBCentralManagerScanOptionAllowDuplicatesKey : @YES}];
       });
     }
+    
     //监听搜索到设备的信号
     [[[[JXBTService sharedInstance] rac_signalForSelector:@selector(centralManager:didDiscoverPeripheral:advertisementData:RSSI:)
                                              fromProtocol:@protocol(CBCentralManagerDelegate)]
       filter:^BOOL(RACTuple *tuple) {
         return tuple.first == scanCentralManager;
       }]
-     subscribeNext:^(RACTuple *tuple){
-       [self centralManager:tuple.first didDiscoverPeripheral:tuple.second advertisementData:tuple.third RSSI:tuple.fourth];
+     subscribeNext:^(RACTuple *tuple) {
+       [self centralManager:tuple.first
+      didDiscoverPeripheral:tuple.second
+          advertisementData:tuple.third
+                       RSSI:tuple.fourth];
      }];
     
-    
+    //更新蓝牙硬件状态
     [[[[JXBTService sharedInstance] rac_signalForSelector:@selector(centralManagerDidUpdateState:)
                                              fromProtocol:@protocol(CBCentralManagerDelegate)]
       filter:^BOOL(RACTuple *tuple) {
@@ -112,9 +116,6 @@ static CBCentralManager *scanCentralManager;
 }
 
 //内部
-- (void)stopScan {
-  [scanCentralManager stopScan];
-}
 
 #pragma mark - CBCentralManager(rac)
 - (void)centralManagerDidUpdateState:(CBCentralManager *)central {
@@ -135,7 +136,7 @@ static CBCentralManager *scanCentralManager;
                                       localName:[advertisementData objectForKey:@"kCBAdvDataLocalName"]
                                       advData:[advertisementData objectForKey:@"kCBAdvDataManufacturerData"]
                                       rssi:RSSI
-                                      peripheral:peripheral];
+                                      peripheral:[peripheral copy]];
   static JXBTService *jxbtServiceInstance;
   if(jxbtServiceInstance == nil) {
     jxbtServiceInstance = [JXBTService sharedInstance];
@@ -151,7 +152,7 @@ static CBCentralManager *scanCentralManager;
 }
 
 - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral {
-  NSLog(@"dsa");
+  
 }
 
 #pragma mark - tools
