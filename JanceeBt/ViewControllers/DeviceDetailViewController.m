@@ -19,6 +19,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *deviceNameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *uuidLabel;
 
+@property (strong, nonatomic) IBOutlet UITextView *notifyTextView;
+
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @end
@@ -98,13 +100,49 @@ static JXBTServiceConnecter *connecter;
   ShowDeviceCharacterTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ShowDeviceCharacterTableViewCell"
                                                                            forIndexPath:indexPath];
   
-  cell.textLabel.text =
-  [((CBService*)[self.deviceItem.peripheral services][indexPath.section]) characteristics][indexPath.row].UUID.UUIDString;
-  cell.detailTextLabel.text =
-  [((CBService*)[self.deviceItem.peripheral services][indexPath.section]) characteristics][indexPath.row].UUID.UUIDString;
+  //uuid
+  CBCharacteristic *aimCharacter =
+  [((CBService*)[self.deviceItem.peripheral services][indexPath.section]) characteristics][indexPath.row];
+  
+  cell.textLabel.text       = aimCharacter.UUID.UUIDString;
   
   
-  NSLog(@"发音一下看看少司命。。。%@",[((CBService*)[self.deviceItem.peripheral services][indexPath.section]) characteristics][indexPath.row].value);
+  //属性显示
+  NSMutableString *propertyString = [[NSMutableString alloc] init];
+  CBCharacteristicProperties properties = aimCharacter.properties;
+  if((properties & CBCharacteristicPropertyBroadcast) != 0) {
+    [propertyString appendString:@"广播|"];
+  }
+  if((properties & CBCharacteristicPropertyRead) != 0) {
+    [propertyString appendString:@"读|"];
+  }
+  if((properties & CBCharacteristicPropertyWriteWithoutResponse) != 0) {
+    [propertyString appendString:@"无响应写|"];
+  }
+  if((properties & CBCharacteristicPropertyWrite) != 0) {
+    [propertyString appendString:@"写|"];
+  }
+  if((properties & CBCharacteristicPropertyNotify) != 0) {
+    [propertyString appendString:@"通告|"];
+  }
+  if((properties & CBCharacteristicPropertyIndicate) != 0) {
+    [propertyString appendString:@"表明|"];
+  }
+  if((properties & CBCharacteristicPropertyAuthenticatedSignedWrites) != 0) {
+    [propertyString appendString:@"认证的写|"];
+  }
+  if((properties & CBCharacteristicPropertyExtendedProperties) != 0) {
+    [propertyString appendString:@"额外属性|"];
+  }
+  if((properties & CBCharacteristicPropertyNotifyEncryptionRequired) != 0) {
+    [propertyString appendString:@"需加密通告|"];
+  }
+  if((properties & CBCharacteristicPropertyIndicateEncryptionRequired) != 0) {
+    [propertyString appendString:@"需加密表明|"];
+  }
+  cell.detailTextLabel.text = propertyString;
+  
+  
   
   
   return cell;

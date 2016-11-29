@@ -657,15 +657,8 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="状态：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KdA-c9-2qo">
-                                        <rect key="frame" x="8" y="12" width="359" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="66" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2Ml-5u-6rE">
-                                        <rect key="frame" x="0.0" y="41" width="375" height="490"/>
+                                        <rect key="frame" x="0.0" y="89" width="375" height="442"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
@@ -699,8 +692,22 @@
                                             <outlet property="delegate" destination="OFA-QU-uc0" id="QEC-6Q-qAZ"/>
                                         </connections>
                                     </tableView>
+                                    <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" text="0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="FoR-ku-f3N">
+                                        <rect key="frame" x="8" y="12" width="359" height="55"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="状态：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KdA-c9-2qo">
+                                        <rect key="frame" x="8" y="60" width="359" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="未连接" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nrv-2X-JLS">
-                                        <rect key="frame" x="123" y="12" width="129" height="21"/>
+                                        <rect key="frame" x="123" y="60" width="129" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -745,6 +752,7 @@
                         <outlet property="deviceNameLabel" destination="LO5-5Y-Tip" id="J59-p8-gwc"/>
                         <outlet property="disconnectAndReturnButtonItem" destination="A5n-rI-X4z" id="rYn-Kd-HXR"/>
                         <outlet property="disconnectButtonItem" destination="zzW-3b-2Ih" id="16x-Wq-fXL"/>
+                        <outlet property="notifyTextView" destination="FoR-ku-f3N" id="YXh-U4-W1y"/>
                         <outlet property="returnButtonItem" destination="gpZ-8P-nT9" id="8Ep-6k-CZV"/>
                         <outlet property="statusLabel" destination="nrv-2X-JLS" id="Mvb-ws-Lc2"/>
                         <outlet property="tableView" destination="2Ml-5u-6rE" id="LTv-8h-Wsn"/>
