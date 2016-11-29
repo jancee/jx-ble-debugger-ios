@@ -190,7 +190,7 @@ static UIStoryboard *mainStoryBoard;
 #pragma mark - SlideNavigationController Delegate
 - (BOOL)slideNavigationControllerShouldDisplayLeftMenu
 {
-  return NO;
+  return YES;
 }
 
 - (BOOL)slideNavigationControllerShouldDisplayRightMenu

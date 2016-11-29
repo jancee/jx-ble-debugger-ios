@@ -38,6 +38,17 @@ static JXBTServiceConnecter *connecter;
 - (void)viewDidLoad {
   [super viewDidLoad];
   
+  
+  NSString *hexString = [self.deviceItem.advData hexadecimalString];
+  NSMutableString *mutableString =
+  [[NSMutableString alloc] initWithString:hexString != nil ? [self.deviceItem.advData hexadecimalString] : @""];
+  NSInteger insertIndex = -1;
+  while (((NSInteger)[hexString length] - insertIndex - 8) > 0) {
+    insertIndex += 9;
+    [mutableString insertString:@" " atIndex:insertIndex];
+  }
+  self.notifyTextView.text = mutableString;
+  
   self.uuidLabel.text       = self.deviceItem.uuid;
   self.deviceNameLabel.text = self.deviceItem.deviceName;
   
