@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface DeviceDetailViewController : UIViewController
+<
+UITableViewDelegate,
+UITableViewDataSource
+>
 
 @property (nonatomic, strong) JXBTDeviceSearched *deviceItem;
 

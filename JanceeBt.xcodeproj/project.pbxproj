@@ -19,6 +19,7 @@
 		74C64E861DEBCC7D00CD5C75 /* JXBTServiceItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C64E811DEBCC7D00CD5C75 /* JXBTServiceItems.m */; };
 		74C64E871DEBCC7D00CD5C75 /* JXBTServiceScannner.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C64E831DEBCC7D00CD5C75 /* JXBTServiceScannner.m */; };
 		74C64E8A1DEC223100CD5C75 /* DeviceDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C64E891DEC223100CD5C75 /* DeviceDetailViewController.m */; };
+		74C64E8D1DEC3D0600CD5C75 /* ShowDeviceCharacterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C64E8C1DEC3D0600CD5C75 /* ShowDeviceCharacterTableViewCell.m */; };
 		74E20D191DD98ED8007565AE /* NSData+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 74E20D0C1DD98ED8007565AE /* NSData+Hex.m */; };
 		74E20D1A1DD98ED8007565AE /* NSDate+WJXTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 74E20D0E1DD98ED8007565AE /* NSDate+WJXTools.m */; };
 		74E20D1B1DD98ED8007565AE /* NSString+byteLength.m in Sources */ = {isa = PBXBuildFile; fileRef = 74E20D101DD98ED8007565AE /* NSString+byteLength.m */; };
@@ -69,6 +70,8 @@
 		74C64E831DEBCC7D00CD5C75 /* JXBTServiceScannner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXBTServiceScannner.m; sourceTree = "<group>"; };
 		74C64E881DEC223100CD5C75 /* DeviceDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceDetailViewController.h; sourceTree = "<group>"; };
 		74C64E891DEC223100CD5C75 /* DeviceDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceDetailViewController.m; sourceTree = "<group>"; };
+		74C64E8B1DEC3D0600CD5C75 /* ShowDeviceCharacterTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowDeviceCharacterTableViewCell.h; sourceTree = "<group>"; };
+		74C64E8C1DEC3D0600CD5C75 /* ShowDeviceCharacterTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowDeviceCharacterTableViewCell.m; sourceTree = "<group>"; };
 		74E20D051DD98D94007565AE /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		74E20D0A1DD98ED8007565AE /* MacroDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MacroDefinition.h; sourceTree = "<group>"; };
 		74E20D0B1DD98ED8007565AE /* NSData+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Hex.h"; sourceTree = "<group>"; };
@@ -281,6 +284,8 @@
 			children = (
 				7471DA9E1DD958A700D08331 /* SearchedDeviceTableViewCell.h */,
 				7471DA9F1DD958A700D08331 /* SearchedDeviceTableViewCell.m */,
+				74C64E8B1DEC3D0600CD5C75 /* ShowDeviceCharacterTableViewCell.h */,
+				74C64E8C1DEC3D0600CD5C75 /* ShowDeviceCharacterTableViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -513,6 +518,7 @@
 				74E20D1D1DD98ED8007565AE /* NSString+Verify.m in Sources */,
 				74E20D191DD98ED8007565AE /* NSData+Hex.m in Sources */,
 				74E20D241DD99FBB007565AE /* LeftMenuViewController.m in Sources */,
+				74C64E8D1DEC3D0600CD5C75 /* ShowDeviceCharacterTableViewCell.m in Sources */,
 				74E20D411DD9A02D007565AE /* SlideNavigationContorllerAnimatorFade.m in Sources */,
 				74E20D441DD9A02D007565AE /* SlideNavigationContorllerAnimatorSlide.m in Sources */,
 				74E20D431DD9A02D007565AE /* SlideNavigationContorllerAnimatorScaleAndFade.m in Sources */,

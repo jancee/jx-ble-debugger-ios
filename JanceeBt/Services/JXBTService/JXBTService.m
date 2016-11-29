@@ -129,9 +129,9 @@ static CBCentralManager   *cbCentralManager;
  */
 - (BOOL)disconnectOneDevice:(NSString*)uuid {
   CBPeripheral *toPeripheral;
-  for (CBPeripheral *peripheral in self.allDeviceDetails) {
-    if([peripheral.identifier.UUIDString isEqualToString:uuid]) {
-      toPeripheral = peripheral;
+  for (JXBTDeviceDetail *detail in self.allDeviceDetails) {
+    if([detail.peripheral.identifier.UUIDString isEqualToString:uuid]) {
+      toPeripheral = detail.peripheral;
       break;
     }
   }
@@ -332,7 +332,6 @@ static CBCentralManager   *cbCentralManager;
 #pragma mark 连接成功回调
 - (void)centralManager:(CBCentralManager *)central
   didConnectPeripheral:(CBPeripheral *)peripheral {
-  
   [self log:@"didConnectPeripheral"];
   
   //启动搜索服务
@@ -373,12 +372,14 @@ didFailToConnectPeripheral:(CBPeripheral *)peripheral
                  error:(NSError *)error{
   
   [self log:@"didFailToConnectPeripheral"];
+  [self connectInterruptPeripheral:peripheral];
 }
 - (void)centralManager:(CBCentralManager *)central
 didDisconnectPeripheral:(CBPeripheral *)peripheral
                  error:(NSError *)error {
   
   [self log:@"didDisconnectPeripheral"];
+  [self connectInterruptPeripheral:peripheral];
 }
 
 #pragma mark 搜索服务结束回调
@@ -451,12 +452,12 @@ didDiscoverCharacteristicsForService:(CBService *)service
     [characterUUIDArray addObject:forC.UUID.UUIDString];
   }
   
-  //sendNext服务
+  //sendNext服务   服务
   [_searchServiceRACSubject sendNext:@{
                                        @"PeripheralUUID"      : peripheral.identifier.UUIDString,
                                        @"ServiceUUID"         : service.UUID.UUIDString,
                                        }];
-  //sendNext特征
+  //sendNext特征    
   [_searchCharacterRACSubject sendNext:@{
                                          @"PeripheralUUID"      : peripheral.identifier.UUIDString,
                                          @"ServiceUUID"         : service.UUID.UUIDString,

@@ -28,6 +28,26 @@ typedef enum {
 
 
 /**
+ 断开连接
+ */
+- (instancetype)setDisconnectBlock:(void (^)())block;
+
+
+
+/**
+ 已连接
+ */
+- (instancetype)setConnectedBlock:(void (^)())block;
+
+
+/**
+ 数据改变
+ */
+- (instancetype)setDataDidBlock:(void (^)(NSDictionary *dict))block;
+
+- (instancetype)setSearchedCharacterBlock:(void (^)(NSDictionary *dict))block;
+- (instancetype)setSearchedServiceBlock:(void (^)(NSDictionary *dict))block;
+/**
  连接设备
 
  @return 链式

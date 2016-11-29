@@ -17,7 +17,9 @@ static const NSString* DictInConnecterArrayKey_Connecter = @"CONNECTER";
 @interface JXBTServiceConnecter () {
   void (^connectBlock)();
   void (^disconnectBlock)();
-  void (^dataDidSubjectBlock)(NSDictionary *dict);
+  void (^dataDidBlock)(NSDictionary *dict);
+  void (^searchedCharacterBlock)(NSDictionary *dict);
+  void (^searchedServiceBlock)(NSDictionary *dict);
 }
 
 @property (nonatomic, strong) NSString *uuid;
@@ -65,12 +67,15 @@ static NSMutableArray<NSDictionary *> *allConnecterArray;
   return returnConnecter;
 }
 
+
 //连接器重置
 - (instancetype)resetAllBlock {
   self.reconnectEnable = NO;
   connectBlock        = ^(){};
   disconnectBlock     = ^(){};
-  dataDidSubjectBlock = ^(NSDictionary *dict){};
+  dataDidBlock = ^(NSDictionary *dict){};
+  searchedCharacterBlock = ^(NSDictionary *dict){};
+  searchedServiceBlock = ^(NSDictionary *dict){};
   return self;
 }
 
@@ -89,7 +94,7 @@ static NSMutableArray<NSDictionary *> *allConnecterArray;
         return [value.identifier.UUIDString isEqualToString:uuid];
       }]
      subscribeNext:^(CBPeripheral *value) {
-       [self log:@"连接断开、失败"];
+       disconnectBlock();
      }];
     
     //  连接成功
@@ -98,7 +103,7 @@ static NSMutableArray<NSDictionary *> *allConnecterArray;
         return [value[@"PeripheralUUID"] isEqualToString:uuid];
       }]
      subscribeNext:^(NSDictionary *value) {
-       [self log:@"连接成功"];
+       connectBlock();
      }];
     
     //  更新数据
@@ -107,7 +112,7 @@ static NSMutableArray<NSDictionary *> *allConnecterArray;
         return [value[@"PeripheralUUID"] isEqualToString:uuid];
       }]
      subscribeNext:^(NSDictionary *value) {
-       [self log:@"更新数据"];
+       dataDidBlock(value);
      }];
     
     //  搜到服务
@@ -116,7 +121,7 @@ static NSMutableArray<NSDictionary *> *allConnecterArray;
         return [value[@"PeripheralUUID"] isEqualToString:uuid];
       }]
      subscribeNext:^(NSDictionary *value) {
-       [self log:@"搜到服务"];
+       searchedServiceBlock(value);
      }];
     
     //  搜到特征
@@ -125,7 +130,7 @@ static NSMutableArray<NSDictionary *> *allConnecterArray;
         return [value[@"PeripheralUUID"] isEqualToString:uuid];
       }]
      subscribeNext:^(NSDictionary *value) {
-       [self log:@"搜到特征"];
+       searchedCharacterBlock(value);
      }];
     /***********************/
     
@@ -134,11 +139,32 @@ static NSMutableArray<NSDictionary *> *allConnecterArray;
 }
 
 
-#pragma mark - 外部调用方法
+#pragma mark - 方法
+- (instancetype)setConnectedBlock:(void (^)())block {
+  connectBlock = block;
+  return self;
+}
 
+- (instancetype)setDisconnectBlock:(void (^)())block {
+  disconnectBlock = block;
+  return self;
+}
 
+- (instancetype)setDataDidBlock:(void (^)(NSDictionary *dict))block {
+  dataDidBlock = block;
+  return self;
+}
 
-#pragma mark - 设置方法
+- (instancetype)setSearchedCharacterBlock:(void (^)(NSDictionary *dict))block {
+  searchedCharacterBlock = block;
+  return self;
+}
+
+- (instancetype)setSearchedServiceBlock:(void (^)(NSDictionary *dict))block {
+  searchedServiceBlock = block;
+  return self;
+}
+
 /**
  设置发送数据时间间隔模式
  
